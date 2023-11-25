@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/JayPornananratKan/T10-SE/controller"
+	//"github.com/JayPornananratKan/T10-SE/controller"
 
 	"github.com/JayPornananratKan/T10-SE/entity"
 )
@@ -18,17 +18,17 @@ func main() {
 
 	// User Routes
 
-	r.GET("/users", controller.ListUsers)
+	// r.GET("/users", controller.ListUsers)
 
-	r.GET("/user/:id", controller.GetUser)
+	// r.GET("/user/:id", controller.GetUser)
 
-	r.POST("/users", controller.CreateUser)
+	// r.POST("/users", controller.CreateUser)
 
-	r.PATCH("/users", controller.UpdateUser)
+	// r.PATCH("/users", controller.UpdateUser)
 
-	r.DELETE("/users/:id", controller.DeleteUser)
+	// r.DELETE("/users/:id", controller.DeleteUser)
 
-	// Run the server
+	// // Run the server
 
 	r.Run()
 
