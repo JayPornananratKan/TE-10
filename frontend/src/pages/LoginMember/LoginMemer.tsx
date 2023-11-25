@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { HiOutlineMail } from "react-icons/hi";
+import { BsList, BsBoxArrowInRight } from "react-icons/bs";
 import "./style.css";
 
 import muscle from '../../img/muscle.png';
@@ -20,15 +20,8 @@ function LoginMember() {
             <header className="header">
                 <nav className="navbar">
                     <a href="/"><IoArrowBack />Back</a>
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Services</a>
-                    <a href="#">Contact</a>
+                    <a className="icon"><BsList/></a>
                 </nav>
-                <form action="#" className="search-bar">
-                    <input type="text" placeholder="Search..." />
-                    <button type="submit"></button>
-                </form>
             </header>
 
             <div className="background"></div>
@@ -50,7 +43,8 @@ function LoginMember() {
                     </div>
                 </div>
 
-                <div className={`logreg-box ${logregBoxActive ? 'active' : ''}`}>                    <div className="form-box login">
+                <div className={`logreg-box ${logregBoxActive ? 'active' : ''}`}>                    
+                    <div className="form-box login">
                         <form action="#">
                             <h2>Sign In</h2>
 

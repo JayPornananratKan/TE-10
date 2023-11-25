@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HiOutlineMail } from "react-icons/hi";
 import "./style.css";
 
+import { Link } from "react-router-dom";
 import muscle from '../../img/muscle.png';
 import { IoArrowBack } from "react-icons/io5";
 
@@ -75,9 +76,9 @@ function LoginAdmin() {
                                 <a href="#">Forgot password</a>
                             </div>
 
-                            <button type="submit" className="btn">
+                            <Link to="/RegisterMember"><button type="submit" className="btn">
                                 Sign In
-                            </button>
+                            </button></Link>
 
                             <div className="login-register">
                                 <p>

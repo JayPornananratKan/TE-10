@@ -1,0 +1,162 @@
+:root {
+    --black: #5e5e5e;
+    --gray: #788097;
+    --glass: rgba(255, 255, 255, 0.95);
+}
+.MuiTableRow-root > * {
+    padding: 10px;
+}
+
+.MuiTableRow-root.MuiTableRow-head > * {
+    font-weight: bold !important;
+    text-align: center;
+}
+
+.Table td,
+th {
+    border: none !important;
+    text-align: center; /* ตรงนี้เพิ่ม text-align: center; */
+}
+
+.Table tbody tr:nth-child(odd) {
+    background-color: #f5f5f5; /* สีพื้นที่สำหรับแถวที่เป็นเลขคี่ */
+}
+
+.Table tbody tr:nth-child(even) {
+    background-color: #ffffff; /* สีพื้นที่สำหรับแถวที่เป็นเลขคู่ */
+}
+
+.Table tbody tr:hover {
+    background-color: #f1fdff; /* สีพื้นที่เมื่อ hover */
+}
+
+.Table .headadd {
+    position: relative;
+    display: flex;
+}
+
+.Table .headadd h3 {
+    font-size: 25px;
+    text-align: center; /* ตรงนี้เพิ่ม text-align: center; */
+}
+
+.Table .headadd .add {
+    background: #CC1010;
+    font-weight: bold;
+    left: 60%;
+}
+.actionbutton .view {
+    color: rgb(124, 218, 126);
+}
+
+.actionbutton .view:hover {
+    background: rgb(124, 218, 126);
+    color: rgb(255, 255, 255);
+}
+
+.actionbutton .enable {
+    color: rgb(0, 94, 255);
+}
+
+.actionbutton .enable:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(112, 165, 255);
+}
+
+.actionbutton .delete {
+    color: #CC1010;
+}
+
+.actionbutton .delete:hover {
+    background: #e52323;
+    color: rgb(255, 255, 255);
+}
+
+.modal-container{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50px);
+    width: 75%;
+    height: 650px;
+    background: url(https://img.freepik.com/free-photo/female-bodybuilder-training-biceps-with-dumbbells_651396-750.jpg?w=1800&t=st=1700912651~exp=1700913251~hmac=56f28dd04fd05df037ab4e2bc9b08d9dfa0d08dae1e4f874301f884517efb6cf);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.modal-container .content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 58%;
+    height: 80%;
+    background: transparent;
+    color: #e4e4e4;
+    padding: 89px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.modal-container h2{
+    position: relative;
+    margin: 20px;
+    gap: 40px;
+    color: #f5f5f5;
+}
+.modal-container h2 .cross{
+    padding-left: 70%;
+    color: #f5f5f5;
+}
+.modal-container h2 .cross:hover{
+    color: #CC1010;
+}
+.modal-container .fillin{
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: calc(100% - 50%);
+    height: 70%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 20px;
+    background: var(--glass);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.modal-container form .adduser{
+    position: absolute;
+    left: 20;
+    top:80%;
+    width: 90%;
+    height: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    background: #CC1010;
+}
+
+.modal-container form .adduser:hover{
+    transform: scale(1.05);
+    background: #e90d0d;
+    box-shadow: 0 0 10px #e90d0d, 0 0 30px #e90d0d;
+}
+@media screen and (max-width: 1200px) {
+    .Table {
+        width: 170%;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Table {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 23rem;
+    }
+}
