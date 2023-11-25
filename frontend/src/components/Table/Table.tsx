@@ -159,13 +159,10 @@ const BasicTable: React.FC = () => {
                 </TableCell>
                 <TableCell className="actionbutton" align="left">
                   <Button className="view" onClick={() => handleViewDetails(row)}><FaEye /></Button>
-                  <i className="space"></i>
                   <Button className="enable" onClick={() => handleToggleStatus(row)}>
                     enable
                   </Button>
-                  <i></i>
                   <Button className="delete" onClick={() => handleDeleteRow(row)}><ImBin /></Button>
-                  
                 </TableCell>
               </TableRow>
             ))}
@@ -216,16 +213,20 @@ const BasicTable: React.FC = () => {
       <Modal open={isDetailModalOpen} onClose={() => setDetailModalOpen(false)}>
         <div className="modal-container">
           <h2>User Details</h2>
-          {selectedRow && (
-            <>
-              <p>ID: {selectedRow.id}</p>
-              <p>Username: {selectedRow.username}</p>
-              <p>Email: {selectedRow.email}</p>
-              <p>Password: {selectedRow.password}</p>
-              <p>Status: {selectedRow.status}</p>
-            </>
-          )}
-          <Button onClick={() => setDetailModalOpen(false)}>Close</Button>
+          <div className="textuser">
+            {selectedRow && (
+              <>
+              <div className="textall">
+                <p>ID: {selectedRow.id}</p>
+                <p>Username: {selectedRow.username}</p>
+                <p>Email: {selectedRow.email}</p>
+                <p>Password: {selectedRow.password}</p>
+                <p>Status: {selectedRow.status}</p>
+              </div>
+              </>
+            )}
+            <Button className="close" onClick={() => setDetailModalOpen(false)}>Close</Button>
+          </div>
         </div>
       </Modal>
     </div>

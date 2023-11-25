@@ -130,9 +130,9 @@ th {
 
 .modal-container form .adduser{
     position: absolute;
-    left: 20;
+    left: 3.5%;
     top:80%;
-    width: 90%;
+    width: 93%;
     height: 50px;
     font-size: 25px;
     font-weight: bold;
@@ -159,4 +159,23 @@ th {
         align-items: center;
         width: 23rem;
     }
+}
+
+.modal-container .textuser{
+    margin: 30px;
+    background: var(--glass);
+    border-radius: 5px;
+    height: 60%;
+}
+
+.modal-container .textuser .close{
+    background: #CC1010;
+    margin: 30px;
+    color: #e4e4e4;
+    left: 85%;
+}
+.modal-container .textall{
+    padding: 30px;
+    font-size: 30px;
+    color: #5e5e5e;
 }
