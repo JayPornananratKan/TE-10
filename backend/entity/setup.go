@@ -1,7 +1,7 @@
 package entity
 
 
-import (
+import ( 
 
 "gorm.io/driver/sqlite"
 
@@ -22,7 +22,7 @@ return db
 
 func SetupDatabase() {
 
-database, err := gorm.Open(sqlite.Open("sa-66.db"), &gorm.Config{})
+database, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 
 if err != nil {
 
@@ -32,7 +32,7 @@ panic("failed to connect database")
 
 // Migrate the schema
 
-database.AutoMigrate(&User{})
+database.AutoMigrate(&Training{})
 
 db = database
 

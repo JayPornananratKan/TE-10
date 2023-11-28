@@ -1,4 +1,4 @@
-module github.com/JayPornananratKan/T10-SE
+module github.com/Peerapong-Chitwuttichot/TE-10
 
 go 1.19
 
