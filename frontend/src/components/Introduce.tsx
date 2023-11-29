@@ -4,7 +4,7 @@ import back from "../asset/Rectangle124.png";
 function Introduce() {
   return (
     <div className=" relative ">
-      <img className="w-full object-cover brightness-75" src={back} />
+      <img title="fitness"className="w-full object-cover brightness-75" src={back} />
       <div className="absolute bottom-2/4 left-32">
         <div className="text-white text-6xl font-bold">
           SPORTS AND HEALTH CENTER
