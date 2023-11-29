@@ -1,4 +1,5 @@
 import Introduce from "./Introduce";
+import Membertypepopup from "./Membertypepopup";
 import Navbar from "./Navbar";
 import Linkmanu from "./linkmanu";
 import Linktotainingtest from "./linktotainingtest";
@@ -11,6 +12,7 @@ export default function main() {
       <Introduce />
       <Linkmanu />
       <Linktotainingtest/>
+      
       </>
  )
 }
