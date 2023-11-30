@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 
-	//"github.com/JayPornananratKan/T10-SE/controller"
+	"github.com/JayPornananratKan/TE-10/controller"
 
-	"github.com/JayPornananratKan/T10-SE/entity"
+	"github.com/JayPornananratKan/TE-10/entity"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 
 	// User Routes
 
-	// r.GET("/users", controller.ListUsers)
+	 r.GET("/Payment", controller.Payment)
 
 	// r.GET("/user/:id", controller.GetUser)
 

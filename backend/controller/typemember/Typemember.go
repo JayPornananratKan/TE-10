@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/JayPornananratKan/T10-SE/entity"
+	"github.com/JayPornananratKan/TE-10/entity"
 )
 
 //HTTP POST request ไปที่ endpoint ของหนังใหม่
