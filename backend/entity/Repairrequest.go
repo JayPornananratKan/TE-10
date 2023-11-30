@@ -13,4 +13,9 @@ type Repairrequest struct {
 	ImageEquipment string
 	MemberID *uint
 	Member Member
+	EquipmentID *uint
+	Equipment Equipment
+	MachineID *uint
+	Machine Machine
+	
 }

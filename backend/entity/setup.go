@@ -36,6 +36,7 @@ database.AutoMigrate(
 	&Repairrequest{},
 	&Bank{},
 	&Typemember{},
+	&Statuspay{},
 	&Payment{},
 	&Gender{},
 	&Member{},	
@@ -46,3 +47,5 @@ database.AutoMigrate(
 db = database
 
 }
+
+

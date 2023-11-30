@@ -4,8 +4,7 @@ import "gorm.io/gorm"
 
 type Typemember struct {
 	gorm.Model
-	Name string
-	Type string
+	Typename string
 	Period int
 	Price int
 

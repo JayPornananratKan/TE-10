@@ -12,17 +12,24 @@ type Payment struct {
 	Slip string
 	TotalPrice int
 	Datie  time.Time
+
 	BankID *uint
 	Bank Bank
 	
-	TypememberID *uint
+	StatuspayID *uint
+	Statuspay Statuspay
+	
+	STypememberID *uint
 	Typemember Typemember
 	
 	MemberID *uint
 	Member Member
 
+}
 
+type Statuspay struct{
+	gorm.Model
+	Statuspay string
 
-	
-
+	Payment []Payment `gorm:"foreignKey:StatuspayID"`
 }
