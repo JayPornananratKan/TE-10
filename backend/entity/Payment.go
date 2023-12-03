@@ -11,7 +11,7 @@ type Payment struct {
 
 	Slip string
 	TotalPrice int
-	Datie  time.Time
+	Datepay  time.Time
 
 	BankID *uint
 	Bank Bank
@@ -19,7 +19,7 @@ type Payment struct {
 	StatuspayID *uint
 	Statuspay Statuspay
 	
-	STypememberID *uint
+	TypememberID *uint
 	Typemember Typemember
 	
 	MemberID *uint

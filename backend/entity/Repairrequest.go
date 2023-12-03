@@ -1,7 +1,7 @@
 package entity
 
 import (
-	
+	"time"
 
 	"gorm.io/gorm"
 )
@@ -10,12 +10,19 @@ type Repairrequest struct {
 	gorm.Model
 	Issue string
 	Imagemachine string
-	ImageEquipment string
+	Daterequest time.Time
+	
 	MemberID *uint
 	Member Member
-	EquipmentID *uint
-	Equipment Equipment
+
 	MachineID *uint
 	Machine Machine
 	
+	StatusrepairID *uint
+	Statusrepair Statusrepair
+}
+
+type Statusrepair struct{
+	gorm.Model
+	Statusrequest string
 }

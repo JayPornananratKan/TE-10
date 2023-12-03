@@ -46,7 +46,7 @@ func CreatePayment(c *gin.Context) {
 	py := entity.Payment{
 		Slip:       payment.Slip,
 		TotalPrice: payment.TotalPrice,
-		Datie:      payment.Datie,
+		Datepay:      payment.Datepay,
 		Bank:       bank,
 		Statuspay:  statuspay,
 		Typemember: typemember,
