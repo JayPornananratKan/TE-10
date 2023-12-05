@@ -8,116 +8,101 @@ import (
 	"github.com/JayPornananratKan/T10-SE/entity"
 )
 
-func CreateUser(c *gin.Context) {
+// POST /equip
+func CreateEquipment(c *gin.Context) {
+	var equip entity.Equipment
+	var admin entity.Admin
+	var typeEquip entity.TypeEquip
+	var timeE entity.TimeForEquip
 
-	var user entity.User
-
-	if err := c.ShouldBindJSON(&user); err != nil {
-
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-
-		return
-
-	}
-
-	if err := entity.DB().Create(&user).Error; err != nil {
+	if err := c.ShouldBindJSON(&equip); err != nil {
 
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 
 		return
 
 	}
+	if tx := entity.DB().Where("id = ?", equip.AdminID).First(&admin); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "admin not found"})
+		return
+	}
+	if tx := entity.DB().Where("id = ?", equip.TypeEquipID).First(&typeEquip); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "type not found"})
+		return
+	}
+	if tx := entity.DB().Where("id = ?", equip.TimeForEquipID).First(&timeE); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "time not found"})
+		return
+	}
+	u := entity.Equipment{
+		E_name: equip.E_name,
+		Pic:    equip.Pic,
 
-	c.JSON(http.StatusOK, gin.H{"data": user})
+		Admin:        admin,
+		TypeEquip:    typeEquip,
+		TimeForEquip: timeE,
+	}
+	if err := entity.DB().Create(&u).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": equip})
 
 }
 
-// GET /user/:id
+// GET /equip/:id
 
-func GetUser(c *gin.Context) {
-
-	var user entity.User
-
+func GetEquip(c *gin.Context) {
+	var equip entity.Equipment
 	id := c.Param("id")
-
-	if err := entity.DB().Raw("SELECT * FROM users WHERE id = ?", id).Scan(&user).Error; err != nil {
-
+	if err := entity.DB().Preload("Admin").Preload("TypeEquip").Preload("TimeForEquip").Raw("SELECT * FROM equipment WHERE id = ?", id).Scan(&equip).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-
 		return
-
 	}
-
-	c.JSON(http.StatusOK, gin.H{"data": user})
-
+	c.JSON(http.StatusOK, gin.H{"data": equip})
 }
 
-// GET /users
+// GET /equip
 
-func ListUsers(c *gin.Context) {
-
-	var users []entity.User
-
-	if err := entity.DB().Raw("SELECT * FROM users").Scan(&users).Error; err != nil {
-
+func GetAllEquip(c *gin.Context) {
+	var equip []entity.Equipment
+	if err := entity.DB().Preload("Admin").Preload("TypeEquip").Preload("TimeForEquip").Raw("SELECT * FROM equipment").Scan(&equip).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-
 		return
-
 	}
-
-	c.JSON(http.StatusOK, gin.H{"data": users})
-
+	c.JSON(http.StatusOK, gin.H{"data": equip})
 }
 
-// DELETE /users/:id
+// DELETE /equip/:id
 
-func DeleteUser(c *gin.Context) {
-
+func DeleteEquip(c *gin.Context) {
 	id := c.Param("id")
-
-	if tx := entity.DB().Exec("DELETE FROM users WHERE id = ?", id); tx.RowsAffected == 0 {
-
-		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
-
+	if tx := entity.DB().Exec("DELETE FROM equipment WHERE id = ?", id); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "equipment not found"})
 		return
-
 	}
-
 	c.JSON(http.StatusOK, gin.H{"data": id})
-
 }
 
-// PATCH /users
+// PATCH /equip
+func UpdateEquip(c *gin.Context) {
+	var result entity.Equipment
+	var equip entity.Equipment
 
-func UpdateUser(c *gin.Context) {
-
-	var user entity.User
-
-	if err := c.ShouldBindJSON(&user); err != nil {
-
+	if err := c.ShouldBindJSON(&equip); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-
 		return
-
 	}
 
-	if tx := entity.DB().Where("id = ?", user.ID).First(&user); tx.RowsAffected == 0 {
-
-		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
-
+	if tx := entity.DB().Where("id = ?", equip.ID).First(&result); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "equipment not found"})
 		return
-
 	}
 
-	if err := entity.DB().Save(&user).Error; err != nil {
-
+	if err := entity.DB().Save(&equip).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-
 		return
-
 	}
-
-	c.JSON(http.StatusOK, gin.H{"data": user})
+	c.JSON(http.StatusOK, gin.H{"data": equip})
 
 }
