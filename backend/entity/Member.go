@@ -14,6 +14,4 @@ type Member struct {
 	Memberinformation []Memberinformation `gorm:"foreignKey:MemberID"`
 	Repairrequest []Repairrequest `gorm:"foreignKey:MemberID"`
 	Payment []Payment `gorm:"foreignKey:MemberID"`
-
-
 }
