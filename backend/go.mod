@@ -1,4 +1,4 @@
-module github.com/JayPornananratKan/T10-SE
+module github.com/Popopond/T10-SE
 
 go 1.19
 

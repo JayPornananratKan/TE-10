@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/JayPornananratKan/T10-SE/controller"
+	"github.com/Popopond/T10-SE/controller"
 
-	"github.com/JayPornananratKan/T10-SE/entity"
+	"github.com/Popopond/T10-SE/entity"
 )
 
 func main() {
@@ -17,12 +17,12 @@ func main() {
 	r.GET("/equip", controller.GetAllEquip)
 	r.GET("/equip/:id", controller.GetEquip)
 	r.POST("/equip", controller.CreateEquipment)
-	r.PATCH("/equip", controller.UpdateEquip)
+	r.PUT("/equip/:id", controller.UpdateEquip)
 	r.DELETE("/equip/:id", controller.DeleteEquip)
 	// TypeEquip Routes
-	r.GET("/typeEquips",controller.GetAllType)
+	r.GET("/typeEquips", controller.GetAllType)
 	// Time Routes
-	r.GET("/timeEquips",controller.GetAllTime)
+	r.GET("/timeEquips", controller.GetAllTime)
 	// Run the server
 
 	r.Run()

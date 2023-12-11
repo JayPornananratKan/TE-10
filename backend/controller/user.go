@@ -4,8 +4,9 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm/clause"
 
-	"github.com/JayPornananratKan/T10-SE/entity"
+	"github.com/Popopond/T10-SE/entity"
 )
 
 // POST /equip
@@ -76,33 +77,44 @@ func GetAllEquip(c *gin.Context) {
 // DELETE /equip/:id
 
 func DeleteEquip(c *gin.Context) {
+
+	// create variable for store data
+	var equip entity.Equipment
+
+	// get id from url
 	id := c.Param("id")
-	if tx := entity.DB().Exec("DELETE FROM equipment WHERE id = ?", id); tx.RowsAffected == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "equipment not found"})
+
+	// delete data in database and check error
+	if rows := entity.DB().Clauses(clause.Returning{}).Delete(&equip, id).RowsAffected; rows == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "record not found"})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"data": id})
+	// response deleted data
+	c.JSON(http.StatusOK, gin.H{"data": "cancel"})
 }
 
 // PATCH /equip
+// PATCH /equip/:id
 func UpdateEquip(c *gin.Context) {
-	var result entity.Equipment
 	var equip entity.Equipment
+	equipID := c.Param("id") // รับ ID จาก URL
 
+	if err := entity.DB().First(&equip, equipID).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Equipment not found"})
+		return
+	}
+
+	// อัปเดตข้อมูลจาก JSON payload ที่ส่งมา
 	if err := c.ShouldBindJSON(&equip); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	if tx := entity.DB().Where("id = ?", equip.ID).First(&result); tx.RowsAffected == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "equipment not found"})
-		return
-	}
-
+	// ทำการบันทึกข้อมูลที่อัปเดตลงในฐานข้อมูล
 	if err := entity.DB().Save(&equip).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update equipment"})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"data": equip})
 
+	c.JSON(http.StatusOK, gin.H{"data": equip})
 }

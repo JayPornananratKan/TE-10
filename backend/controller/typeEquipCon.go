@@ -3,7 +3,7 @@ package controller
 import (
 	"net/http"
 
-	"github.com/JayPornananratKan/T10-SE/entity"
+	"github.com/Popopond/T10-SE/entity"
 	"github.com/gin-gonic/gin"
 )
 

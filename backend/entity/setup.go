@@ -1,6 +1,8 @@
 package entity
 
 import (
+	
+
 	"gorm.io/driver/sqlite"
 
 	"gorm.io/gorm"
@@ -32,6 +34,21 @@ func SetupDatabase() {
 		&Equipment{},
 	)
 
+	// Type1 := TypeEquip{
+	// 	TypeEquip_name:  "Strength Training",
+	// }
+	// db.Model(&TypeEquip{}).Create(&Type1)
+	// Type2 := TypeEquip{
+	// 	TypeEquip_name:  "Physical Therapy",
+	// }
+	// db.Model(&TypeEquip{}).Create(&Type2)
+	// Time1 := TimeForEquip{
+	// 	Time:   time.Date(2012, 8, 24, 0, 0, 0, 0, time.Now().Location()),
+	// }
+	// Time1 := TimeForEquip{
+	// 	Time:   time.Date(2012, 8, 24, 0, 0, 0, 0, time.Now().Location()),
+	// }
+	// db.Model(&TimeForEquip{}).Create(&Time1)
 	db = database
 
 }

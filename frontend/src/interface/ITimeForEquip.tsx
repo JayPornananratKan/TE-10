@@ -1,5 +1,5 @@
 export interface TimeForEquipInterface{
     ID?: number;
-    TypeEquip_name?: string;
+    TimeEquip?: string;
 }
 

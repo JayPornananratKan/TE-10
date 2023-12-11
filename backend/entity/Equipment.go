@@ -30,6 +30,7 @@ type TypeEquip struct{
 type TimeForEquip struct{
 	gorm.Model
 	Time time.Time
+	TimeEquip string
 
 	Equipments []Equipment `gorm:"foreignKey:TimeForEquipID"`
 }
